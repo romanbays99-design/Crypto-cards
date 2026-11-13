@@ -367,7 +367,7 @@
     var html = '<p class="crumb"><a href="#">← All cards</a></p><div class="cp-head">' + art(c, "cp-art") + '<div class="cp-info">' +
       '<p class="eyebrow">' + esc(title(p.network || "Card")) + " · " + esc(title(p.cardType || "")) + "</p><h1>" + esc(c.name) + "</h1>" +
       (c.updated ? '<p class="cp-meta">Review updated ' + esc(c.updated) + "</p>" : "") +
-      (w ? '<blockquote class="mynote"><img src="images/brand/eye-mark.webp" alt="" width="28" height="28"><p><span>In my wallet · ' + esc(w[1]) + "</span>" + esc(w[2]) + "</p></blockquote>" : "") +
+      (w ? '<blockquote class="mynote"><img src="images/brand/satoshi-pfp.webp" alt="" width="28" height="28"><p><span>In my wallet · ' + esc(w[1]) + "</span>" + esc(w[2]) + "</p></blockquote>" : "") +
       '<div class="tags">' + c.tags.map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
       '<div class="cta">' + (c.link ? '<a class="btn btn--accent" href="' + esc(safeUrl(c.link)) + '" target="_blank" rel="noopener sponsored">Issue card ↗</a>' : "") +
       '<button type="button" class="btn btn--ghost" data-cmp="' + c.id + '" aria-pressed="' + inCmp + '">' + (inCmp ? "✓ In compare" : "+ Add to compare") + "</button></div>" +
