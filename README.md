@@ -18,7 +18,7 @@ python3 -m http.server 8000
 | `data/profiles.json` | Per-card questions and answers from the live site |
 | `tools/build_data.py` | Rebuilds `assets/data.js` from the two files in `data/` |
 | `images/cards/` | Card art from the live site |
-| `images/brand/` | Tears of Satoshi avatar and eye mark |
+| `images/brand/` | Tears of Satoshi avatar (transparent cut-out), studio image and eye mark |
 
 ## Editing the wallet picks
 
