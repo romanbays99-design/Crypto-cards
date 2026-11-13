@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crypto Cards Database</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Compare 36 crypto cards and 97 plans by rewards, FX fees, plan fees, KYC, custody and country availability.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<!--page-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#" aria-label="Crypto Cards Database, home">
+      <svg class="brand__mark" viewBox="0 0 40 32" aria-hidden="true">
+        <rect x="3" y="7" width="22" height="15" rx="2.5" transform="rotate(-14 14 14.5)" fill="var(--teal)" opacity=".35"/>
+        <rect x="9" y="7" width="22" height="15" rx="2.5" transform="rotate(-4 20 14.5)" fill="var(--teal)" opacity=".65"/>
+        <rect x="15" y="8" width="22" height="15" rx="2.5" transform="rotate(8 26 15.5)" fill="var(--teal)"/>
+        <rect x="19" y="13" width="5" height="4" rx="1" transform="rotate(8 26 15.5)" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__name">Crypto Cards <small>Database</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#" data-nav="finder">Database</a>
+      <a href="#compare" data-nav="compare">Compare <span class="nav__count" id="nav-count" hidden>0</span></a>
+      <a href="https://crypto-cards.io/blog" target="_blank" rel="noopener">Blog</a>
+      <a href="https://crypto-cards.io/team" target="_blank" rel="noopener">Team</a>
+    </nav>
+    <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch between light and dark theme">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Finder: the home page is the tool -->
+  <section id="view-finder" class="view">
+    <div class="hero">
+      <div class="wrap hero__in">
+        <div class="hero__copy">
+          <p class="eyebrow" id="hero-meta">Crypto cards, compared</p>
+          <h1>Find the crypto card that fits how you spend.</h1>
+          <p class="ask">
+            I live in
+            <span class="pick"><select id="q-country" aria-label="Country you live in"></select></span>
+            and I care most about
+            <span class="pick"><select id="q-priority" aria-label="What matters most">
+              <option value="">nothing in particular</option>
+              <option value="cashback">the most cashback</option>
+              <option value="fx">low FX fees</option>
+              <option value="free">paying no plan fee</option>
+              <option value="self">keeping my own keys</option>
+              <option value="kyc">little or no KYC</option>
+            </select></span>.
+          </p>
+          <p class="hero__note">Answer both and the list below re-ranks itself. Every card page lists the provider documents its figures come from.</p>
+        </div>
+        <div class="fan" id="hero-fan" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="wrap finder">
+      <aside class="rail" id="rail" aria-label="Filters">
+        <div class="rail__head">
+          <h2>Filters</h2>
+          <button class="link-btn" id="clear-filters" type="button" hidden>Clear all</button>
+        </div>
+        <div id="facets"></div>
+      </aside>
+
+      <div class="results">
+        <div class="toolbar">
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="q" type="search" placeholder="Search by card, network or feature" autocomplete="off" aria-label="Search cards">
+          </label>
+          <button class="btn btn--ghost rail-toggle" id="rail-toggle" type="button" aria-expanded="false" aria-controls="rail">Filters <span id="filter-count"></span></button>
+          <label class="sort">
+            <span>Sort</span>
+            <select id="sort">
+              <option value="featured">Editor's order</option>
+              <option value="cashback">Highest cashback</option>
+              <option value="fx">Lowest FX fee</option>
+              <option value="free">Free plans first</option>
+              <option value="name">Name A to Z</option>
+            </select>
+          </label>
+          <div class="seg" role="group" aria-label="Layout">
+            <button type="button" id="view-list" aria-pressed="true">List</button>
+            <button type="button" id="view-grid" aria-pressed="false">Cards</button>
+          </div>
+        </div>
+        <div class="status">
+          <p id="count" aria-live="polite"></p>
+          <div class="chips" id="active"></div>
+        </div>
+        <div class="ledger" id="ledger"></div>
+        <p class="fineprint">Figures show each card's default plan and come from provider documentation. "Up to" rates are headline maximums and often depend on tier, staking or monthly caps. Issue-card links may be referral links. The default order is editorial; use Sort to rank by the numbers.</p>
+      </div>
+    </div>
+
+    <section class="wrap faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Questions people ask before picking a card</h2>
+      <div class="faq__list" id="faq"></div>
+    </section>
+  </section>
+
+  <!-- Card page -->
+  <section id="view-card" class="view" hidden>
+    <div class="wrap" id="card-page"></div>
+  </section>
+
+  <!-- Compare -->
+  <section id="view-compare" class="view" hidden>
+    <div class="wrap" id="compare-page"></div>
+  </section>
+</main>
+
+<div class="tray" id="tray" hidden>
+  <div class="wrap tray__in">
+    <div class="tray__cards" id="tray-cards"></div>
+    <button class="link-btn" id="tray-clear" type="button">Clear</button>
+    <a class="btn btn--accent" href="#compare" id="tray-go">Compare</a>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <span class="brand__name">Crypto Cards <small>Database</small></span>
+      <p>An independent database of crypto debit, prepaid and credit-style cards. Card terms change often, so check the provider's own pricing page before you apply.</p>
+    </div>
+    <nav aria-label="Explore"><h3>Explore</h3><a href="#">Cards database</a><a href="#compare">Compare</a><a href="https://crypto-cards.io/blog" target="_blank" rel="noopener">Blog</a></nav>
+    <nav aria-label="Company"><h3>Company</h3><a href="https://crypto-cards.io/team" target="_blank" rel="noopener">Team</a><a href="https://crypto-cards.io/privacy" target="_blank" rel="noopener">Privacy</a></nav>
+    <nav aria-label="Follow"><h3>Follow</h3><a href="https://x.com/satoshi_tear" target="_blank" rel="noopener">X</a><a href="https://t.me/satoshi_tear" target="_blank" rel="noopener">Telegram</a></nav>
+  </div>
+  <div class="wrap foot__legal">© Crypto Cards Database 2026</div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<!--/page-->
+</body>
+</html>
