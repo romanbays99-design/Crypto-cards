@@ -30,6 +30,7 @@
     <nav class="nav" aria-label="Main">
       <a href="#" data-nav="finder">Database</a>
       <a href="#compare" data-nav="compare">Compare <span class="nav__count" id="nav-count" hidden>0</span></a>
+      <a href="#guides" data-nav="guides">Guides</a>
       <a href="https://crypto-cards.io/blog" target="_blank" rel="noopener">Blog</a>
       <a href="https://crypto-cards.io/team" target="_blank" rel="noopener">Team</a>
     </nav>
@@ -46,7 +47,11 @@
     <div class="hero">
       <div class="wrap hero__in">
         <div class="hero__copy">
-          <p class="eyebrow" id="hero-meta">Crypto cards, compared</p>
+          <div class="badges">
+            <span class="byline"><img src="images/brand/eye-mark.webp" alt="" width="24" height="24">By Tears of Satoshi</span>
+            <span class="trust"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 2.5 3.8v3.6c0 3.3 2.3 6.2 5.5 7.1 3.2-.9 5.5-3.8 5.5-7.1V3.8L8 1.5Zm-1 9.6L4.4 8.5l1-1L7 9.1l3.6-3.6 1 1L7 11.1Z" fill="currentColor"/></svg>Sourced from provider docs</span>
+            <span class="eyebrow" id="hero-meta"></span>
+          </div>
           <h1>Find the crypto card that fits how you spend.</h1>
           <p class="ask">
             I live in
@@ -63,11 +68,31 @@
           </p>
           <p class="hero__note">Answer both and the list below re-ranks itself. Every card page lists the provider documents its figures come from.</p>
         </div>
-        <div class="fan" id="hero-fan" aria-hidden="true"></div>
+        <figure class="avatar">
+          <img src="images/brand/satoshi-avatar.webp" alt="Satoshi, the Tears of Satoshi mascot, holding a crypto card" width="840" height="840">
+          <figcaption>Picks and reviews by Tears of Satoshi</figcaption>
+        </figure>
       </div>
     </div>
 
-    <div class="wrap finder">
+    <section class="wallet" aria-labelledby="wallet-h">
+      <div class="wrap">
+        <div class="wallet__head">
+          <div>
+            <p class="eyebrow">My wallet</p>
+            <h2 id="wallet-h">6 cards I actually use</h2>
+            <p class="wallet__sub">Most used first, with one line on why each one stays in my wallet.</p>
+          </div>
+          <div class="wallet__nav">
+            <button class="icon-btn" id="wallet-prev" type="button" aria-label="Scroll my wallet back">←</button>
+            <button class="icon-btn" id="wallet-next" type="button" aria-label="Scroll my wallet forward">→</button>
+          </div>
+        </div>
+        <ol class="wallet__track" id="wallet"></ol>
+      </div>
+    </section>
+
+    <div class="wrap finder" id="finder-top">
       <aside class="rail" id="rail" aria-label="Filters">
         <div class="rail__head">
           <h2>Filters</h2>
@@ -98,10 +123,12 @@
             <button type="button" id="view-grid" aria-pressed="false">Cards</button>
           </div>
         </div>
-        <div class="status">
-          <p id="count" aria-live="polite"></p>
+        <div class="activebar" id="activebar" hidden>
+          <span class="activebar__label">Active filters</span>
           <div class="chips" id="active"></div>
+          <button class="link-btn" type="button" data-clear="all">Clear all</button>
         </div>
+        <p id="count" class="count" aria-live="polite"></p>
         <div class="ledger" id="ledger"></div>
         <p class="fineprint">Figures show each card's default plan and come from provider documentation. "Up to" rates are headline maximums and often depend on tier, staking or monthly caps. Issue-card links may be referral links. The default order is editorial; use Sort to rank by the numbers.</p>
       </div>
@@ -118,6 +145,11 @@
     <div class="wrap" id="card-page"></div>
   </section>
 
+  <!-- Guides -->
+  <section id="view-guides" class="view" hidden>
+    <div class="wrap" id="guides-page"></div>
+  </section>
+
   <!-- Compare -->
   <section id="view-compare" class="view" hidden>
     <div class="wrap" id="compare-page"></div>
@@ -128,7 +160,7 @@
   <div class="wrap tray__in">
     <div class="tray__cards" id="tray-cards"></div>
     <button class="link-btn" id="tray-clear" type="button">Clear</button>
-    <a class="btn btn--accent" href="#compare" id="tray-go">Compare</a>
+    <a class="btn btn--accent" href="#compare" id="tray-go">Compare now (0/4)</a>
   </div>
 </div>
 
@@ -136,9 +168,10 @@
   <div class="wrap foot__in">
     <div class="foot__brand">
       <span class="brand__name">Crypto Cards <small>Database</small></span>
+      <p class="byline byline--foot"><img src="images/brand/eye-mark.webp" alt="" width="24" height="24">By Tears of Satoshi</p>
       <p>An independent database of crypto debit, prepaid and credit-style cards. Card terms change often, so check the provider's own pricing page before you apply.</p>
     </div>
-    <nav aria-label="Explore"><h3>Explore</h3><a href="#">Cards database</a><a href="#compare">Compare</a><a href="https://crypto-cards.io/blog" target="_blank" rel="noopener">Blog</a></nav>
+    <nav aria-label="Explore"><h3>Explore</h3><a href="#">Cards database</a><a href="#compare">Compare</a><a href="#guides">Guides</a><a href="https://crypto-cards.io/blog" target="_blank" rel="noopener">Blog</a></nav>
     <nav aria-label="Company"><h3>Company</h3><a href="https://crypto-cards.io/team" target="_blank" rel="noopener">Team</a><a href="https://crypto-cards.io/privacy" target="_blank" rel="noopener">Privacy</a></nav>
     <nav aria-label="Follow"><h3>Follow</h3><a href="https://x.com/satoshi_tear" target="_blank" rel="noopener">X</a><a href="https://t.me/satoshi_tear" target="_blank" rel="noopener">Telegram</a></nav>
   </div>

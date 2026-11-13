@@ -18,6 +18,11 @@ python3 -m http.server 8000
 | `data/profiles.json` | Per-card questions and answers from the live site |
 | `tools/build_data.py` | Rebuilds `assets/data.js` from the two files in `data/` |
 | `images/cards/` | Card art from the live site |
+| `images/brand/` | Tears of Satoshi avatar and eye mark |
+
+## Editing the wallet picks
+
+The six "My wallet" cards and their notes are the `WALLET` list near the top of `assets/app.js`. Each entry is a card id, a short label and one line on why it is in the wallet.
 
 ## Updating the data
 
@@ -29,4 +34,4 @@ python3 tools/build_data.py
 
 ## Not included
 
-Blog, team and privacy pages link to the live site. User reviews, the newsletter form and analytics are not wired up. Views are routed on the URL hash (`#card-wirex`, `#compare`); a production version should give each card a real URL for search engines.
+Blog, team and privacy pages link to the live site. User reviews, the newsletter form and analytics are not wired up. Views are routed on the URL hash (`#card-wirex`, `#guides`, `#compare`). A comparison is shareable as `#compare--kast-p1--gnosis-pay`, where `-pN` picks a plan (0 is the default); a production version should give each card a real URL for search engines.
